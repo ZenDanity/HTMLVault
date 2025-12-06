@@ -1,0 +1,109 @@
+/* ============================================
+   RESPONSIVE STYLES - Mobile and tablet layouts
+   ============================================ */
+
+/* Tablet and below (< 768px) */
+@media screen and (max-width: 768px) {
+  :root {
+    --navbar-height: auto;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+  }
+  
+  #topnav {
+    flex-direction: column;
+    padding: var(--spacing-md);
+    height: auto;
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-left,
+  .nav-center,
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-center {
+    flex-wrap: wrap;
+  }
+  
+  #vault {
+    padding: var(--spacing-md);
+  }
+  
+  #vault-content {
+    padding: var(--spacing-md);
+  }
+  
+  input[type="password"] {
+    min-width: 200px;
+  }
+}
+
+/* Mobile portrait (< 480px) */
+@media screen and (max-width: 480px) {
+  :root {
+    --font-size-base: 0.875rem;
+    --font-size-sm: 0.75rem;
+    --spacing-sm: 6px;
+    --spacing-md: 10px;
+    --spacing-lg: 14px;
+  }
+  
+  .nav-left h1 {
+    font-size: 1.125rem;
+  }
+  
+  .nav-left .logo {
+    height: 24px;
+  }
+  
+  .nav-right .github-logo {
+    height: 24px;
+  }
+  
+  button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  
+  input[type="password"] {
+    min-width: 150px;
+    font-size: var(--font-size-sm);
+  }
+  
+  #vault {
+    padding: var(--spacing-sm);
+  }
+  
+  #vault-content {
+    padding: var(--spacing-sm);
+    min-height: 300px;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button {
+    border-width: 2px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    border-width: 2px;
+  }
+  
+  #vault-content {
+    border-width: 4px;
+  }
+}

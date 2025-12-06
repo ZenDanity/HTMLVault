@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    SECURITY HEADERS - file:// Protocol (Local File Usage)
+    
+    These meta tags provide the best security possible for local file:// usage:
+    - CSP: Enforces strict resource policy, prevents external connections, blocks iframes
+    - Referrer: Prevents URL leakage when navigating away (works in meta tag)
+    
+    Note: Cache-Control, X-Content-Type-Options, and X-Frame-Options are ineffective
+    as meta tags but are included as documentation of security intent.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none';">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  
+  <!--
+    SECURITY HEADERS - HTTP Server Deployment (Optional)
+    
+    If you deploy HTMLVault on a web server, configure these HTTP response headers
+    for maximum security. These are MORE EFFECTIVE than meta tags and provide
+    comprehensive protection:
+    
+    REQUIRED HEADERS:
+    Content-Security-Policy: default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none';
+    Referrer-Policy: no-referrer
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY
+    
+    CACHE PREVENTION (Critical for security):
+    Cache-Control: no-store, no-cache, must-revalidate, max-age=0, private
+    Pragma: no-cache
+    Expires: 0
+    
+    ADDITIONAL HARDENING:
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+    X-XSS-Protection: 1; mode=block
+    Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+    Cross-Origin-Embedder-Policy: require-corp
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    
+    Example Nginx configuration:
+    add_header Content-Security-Policy "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none';" always;
+    add_header Referrer-Policy "no-referrer" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0, private" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    add_header Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()" always;
+  -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTMLVault - Encrypted credential and data storage in a single HTML file">
+  <title>HTMLVault</title>
+  
+  <!-- Favicon (embedded as data URI) -->
+  <link replace rel="icon" type="image/png" href="img/favicon.ico">
+  
+  <link replace rel="stylesheet" type="text/css" href="styles/base.css" />
+  <link replace rel="stylesheet" type="text/css" href="styles/themes.css" />
+  <link replace rel="stylesheet" type="text/css" href="styles/responsive.css" />
+  <link replace rel="stylesheet" type="text/css" href="styles/help.css" />
+  <link replace rel="stylesheet" type="text/css" href="styles/image.css" />
+  
+</head>
+<body class="theme-dark">
+  
+  <div id="app">
+    
+    <!-- Top Navigation -->
+    <header id="topnav">
+      <div class="nav-left">
+        <button id="downloadBtn" class="btn-save">
+          <img replace src="img/save.png" alt="Save" class="save-icon">
+        </button>
+        <h1 id="vaultTitle" contenteditable="false">HTMLVault</h1>
+        <button id="editTitleBtn" class="btn-icon-pen" type="button">✎</button>
+      </div>
+      
+      <div class="nav-center">
+        <button id="decryptBtn" class="btn-lock">
+          <img replace src="img/decrypt.png" alt="Decrypt" class="lock-icon">
+        </button>
+        <div class="password-wrapper">
+          <input type="text" id="password" class="password-masked" placeholder="master password" autofocus>
+          <button id="togglePassword" class="btn-icon" type="button">👁</button>
+          <div class="password-strength">
+            <div class="strength-bar" data-level="1"></div>
+            <div class="strength-bar" data-level="2"></div>
+            <div class="strength-bar" data-level="3"></div>
+            <div class="strength-bar" data-level="4"></div>
+          </div>
+        </div>
+        <button id="encryptBtn" class="btn-lock">
+          <img replace src="img/encrypt.png" alt="Encrypt" class="lock-icon">
+        </button>
+      </div>
+      
+      <div class="nav-right">
+        <div class="module-selector">
+          <button id="moduleBtn" class="btn-secondary">
+            <span class="plus-icon">+</span>
+          </button>
+          <div id="moduleDropdown" class="dropdown-menu hidden">
+            <div class="dropdown-item" data-module="credentials">Credentials</div>
+            <div class="dropdown-item" data-module="textarea">Just Text</div>
+            <div class="dropdown-item" data-module="image">Image</div>
+          </div>
+        </div>
+        <!--
+        <div id="buymeacoffee-container">
+            <a href="https://www.buymeacoffee.com/zendanity" target="_blank" rel="noopener noreferrer">
+            <img replace src="img/buymeacoffee.png" alt="Buy me a coffee" class="buymeacoffee-logo">
+            </a>
+        </div>
+        -->
+        <div id="github-container">
+          <a href="https://github.com/zendanity" target="_blank" rel="noopener noreferrer">
+            <img replace src="img/github.png" alt="GitHub" class="github-logo">
+          </a>
+        </div>
+        <div id="help-container">
+          <button id="helpBtn" class="btn-help">❔</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="vault">
+      <div class="vault-label">Encrypted Area</div>
+      <div id="encryptedContent">
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%; text-align: center;">
+          <div style="max-width: 700px; padding: 20px;">
+            <h2 style="color: var(--color-primary); margin-bottom: 20px; font-size: 1.8rem;">Welcome to HTMLVault! 🔒</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 16px;">
+              Your secure, offline password and data vault.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">
+              Click the <strong>+</strong> button in the top-right to add content, then encrypt it with a password to keep it safe.
+            </p>
+            <br>
+            <p style="font-size:2em; font-weight:bold";>Need Help?</p>
+            <p style="font-size: 1.5em; line-height: 1.6;">
+              Click the <strong style="font-size:1.2em;">?</strong> in the top-right corner for a complete guide and <u>beginner-friendly tutorial</u>, <u>TL;DR</u> Info & <u>Shortcuts</u>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="footer">
+      <p><a href="https://www.buymeacoffee.com/zendanity" target="_blank" rel="noopener noreferrer">☕ Buy me a Coffee</a> | made by <a href="https://github.com/ZenDanity" target="_blank" rel="noopener noreferrer">ZenDanity</a></p>
+    </footer>
+    
+  </div>
+
+  <!-- Help Modal -->
+  HTML_HELP_MODAL
+  
+  <script replace type="text/javascript" src="scripts/crypto.js"></script>
+  <script replace type="text/javascript" src="scripts/app.js"></script>
+  
+</body>
+</html>

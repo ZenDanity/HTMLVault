@@ -1,0 +1,533 @@
+<div id="helpModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="help-tabs">
+        <button class="help-tab active" data-tab="general">General Info</button>
+        <button class="help-tab" data-tab="userguide">👶 Full User Guide</button>
+      </div>
+      <button id="closeHelpBtn" class="btn-icon" type="button">×</button>
+    </div>
+    <div class="modal-body" id="helpContent">
+      
+      <!-- General Help Tab -->
+      <div id="generalTab" class="help-tab-content active">
+          <!--<h3>🚀 Main Functions</h3>-->
+        <section class="help-section" style="text-align: center; margin-bottom: 20px;">
+          <a href="https://www.buymeacoffee.com/zendanity" target="_blank" rel="noopener noreferrer">
+            <img replace src="img/buymeacoffee.png" alt="Buy me a coffee" class="buymeacoffee-logo">
+          </a>
+        </section>
+
+        <table class="help-icons-table">
+          <tr>
+            <td>
+              <button class="btn-save">
+                <img replace src="img/save.png" alt="Save" class="save-icon">
+              </button>
+            </td>
+            <td>Use this button to save the file to your computer.<br><span class="help-shortcut">(Ctrl + S)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="help-title-example">
+                <h1 class="help-title-text">HTMLVault</h1>
+                <button class="btn-icon-pen" type="button">✎</button>
+              </div>
+            </td>
+            <td>Double click the text or the ✎ to edit the filename and title</td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn-lock">
+                <img replace src="img/decrypt.png" alt="Decrypt" class="lock-icon">
+              </button>
+            </td>
+            <td>Click to decrypt your vault with your password<br><span class="help-shortcut">(Press 'Enter' after typing your password to encrypt/decrypt automatically)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" class="password-masked help-password-example" placeholder="master password">
+            </td>
+            <td>Enter your master password here<br><span class="help-shortcut">(Press 'Enter' after typing your password to encrypt/decrypt automatically)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn-lock">
+                <img replace src="img/encrypt.png" alt="Encrypt" class="lock-icon">
+              </button>
+            </td>
+            <td>Click to encrypt your vault with your password<br><span class="help-shortcut">(Press 'Enter' after typing your password to encrypt/decrypt automatically)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mini-vault-box">
+                <div class="mini-vault-label">Encrypted Area</div>
+              </div>
+            </td>
+            <td>This is where your de- and encrypted content will be displayed</td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn-secondary">
+                <span class="plus-icon help-plus-icon">+</span>
+              </button>
+            </td>
+            <td>Click to add content to your vault</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="help-module-example">
+                <button class="btn-secondary">
+                  <span class="plus-icon help-plus-icon">+</span>
+                </button>
+                <span class="content-type-box">Credentials</span>
+              </div>
+            </td>
+            <td>Store usernames, passwords, and login information in a table<br><span class="help-shortcut">(Scroll down for details about this template)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="help-module-example">
+                <button class="btn-secondary">
+                  <span class="plus-icon help-plus-icon">+</span>
+                </button>
+                <span class="content-type-box">Just Text</span>
+              </div>
+            </td>
+            <td>Simple plain text editor for notes and unformatted content<br><span class="help-shortcut">(Scroll down for details about this template)</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="help-module-example">
+                <button class="btn-secondary">
+                  <span class="plus-icon help-plus-icon">+</span>
+                </button>
+                <span class="content-type-box">Images</span>
+              </div>
+            </td>
+            <td>Store and encrypt images. The file may get very big<br><span class="help-shortcut">(Scroll down for details about this template)</span></td>
+          </tr>
+        </table>
+      </section>
+
+    <section class="help-section">
+        <p class="help-note">⚠️ <strong>CRITICAL WARNING:</strong> If you forget your password, your data is permanently
+            lost. There is NO password recovery method - this is by design for maximum security. Write down your password in
+            a secure location!</p>
+    </section>
+
+    <!--<hr class="help-divider">-->
+
+      <section class="help-section">
+        <h3>📋 Credentials</h3>
+        <p>The Credentials template is perfect for storing login information like usernames, passwords, and website addresses.</p>
+        <ul>
+          <li><strong>Table Format:</strong> Your information is organized in rows, with columns for website, username, and password</li>
+          <li><strong>Click to Copy:</strong> Single-click any cell (like a password) to instantly copy it to your clipboard</li>
+          <li><strong>Double-Click to Edit:</strong> Double-click any cell to make changes directly in the table</li>
+          <li><strong>Add Rows:</strong> Click the "Add Row" button to add more login credentials</li>
+          <li><strong>Delete Rows:</strong> Click the delete button (🗑️) next to any row to remove it</li>
+          <li><strong>Filter/Search:</strong> Use the filter box to quickly find specific credentials</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h3>📝 Just Text</h3>
+        <p>The Just Text template is a simple text area for storing any kind of unformatted text.</p>
+        <ul>
+          <li><strong>Perfect for:</strong> Notes, lists, ideas, codes, recipes, or any text you want to keep private</li>
+          <li><strong>Simple:</strong> Just type or paste your text - no formatting, no complications</li>
+          <li><strong>Large Capacity:</strong> Can store thousands of lines of text</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h3>🖼️ Images</h3>
+        <p>The Images template allows you to store pictures securely in your vault.</p>
+        <ul>
+          <li><strong>Coming Soon:</strong> This feature is currently under development</li>
+          <li><strong>Note:</strong> Adding images will make your vault file larger</li>
+          <li><strong>Use Cases:</strong> Store important documents, ID scans, receipts, or personal photos</li>
+        </ul>
+      </section>
+
+      <hr class="help-divider">
+
+      <section class="help-section">
+        <h3>🚀 Getting Started</h3>
+        <ol>
+          <li><strong>Choose Content Type:</strong> Click the <strong>+</strong> button in the top-right to select what you want to store (Credentials, Just Text, or Image)</li>
+          <li><strong>Add Your Data:</strong> Fill in your sensitive information</li>
+          <li><strong>Enter Password:</strong> Type a strong master password in the center field (watch the strength bars!)</li>
+          <li><strong>Encrypt:</strong> Click the <strong>closed lock 🔒</strong> icon</li>
+          <li><strong>Save File:</strong> Click the <strong>save icon 💾</strong> in the top-left to download your encrypted vault</li>
+          <li><strong>Store Safely:</strong> Save the file to a secure location (USB drive, cloud backup, etc.)</li>
+        </ol>
+      </section>
+
+      <section class="help-section">
+        <h3>🔓 Opening Your Vault Later</h3>
+        <ol>
+          <li><strong>Open the saved HTML file</strong> in your browser</li>
+          <li><strong>Enter your password</strong> in the center field</li>
+          <li><strong>Click the open lock 🔓</strong> or press <strong>Enter</strong> to decrypt</li>
+          <li><strong>Make your changes</strong></li>
+          <li><strong>Encrypt again</strong> with the closed lock 🔒</li>
+          <li><strong>Save</strong> to update the file (use Ctrl+S or click save icon)</li>
+        </ol>
+      </section>
+
+      <section class="help-section">
+        <h3>✏️ Quick Tips</h3>
+        <ul>
+          <li><strong>Edit Vault Name:</strong> Double-click the underlined title next to the save button, or click the pencil ✎ icon</li>
+          <li><strong>Copy Credentials:</strong> Single-click any cell in the credentials table to copy it instantly</li>
+          <li><strong>Edit Credentials:</strong> Double-click any cell to edit it directly</li>
+          <li><strong>Show Password:</strong> Click and hold the 👁️ eye icon to reveal your password while typing</li>
+          <li><strong>Keyboard Shortcut:</strong> Press <strong>Ctrl+S</strong> to save quickly</li>
+        </ul>
+      </section>
+
+      <hr class="help-divider">
+
+      <section class="help-section">
+        <h3>📖 More Details</h3>
+      </section>
+
+      <section class="help-section">
+        <h4>🔐 Security Information</h4>
+        <ul>
+          <li><strong>Encryption:</strong> AES-256-GCM (military-grade encryption)</li>
+          <li><strong>Key Derivation:</strong> PBKDF2 with 100,000 iterations</li>
+          <li><strong>Password:</strong> Never stored anywhere - only you know it</li>
+          <li><strong>Offline:</strong> Works completely offline, no internet required</li>
+          <li><strong>No Tracking:</strong> Zero data collection, no servers, no cloud</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h4>📝 Content Types Explained</h4>
+        <div class="help-subsection">
+          <h4>Credentials</h4>
+          <p>Store usernames, passwords, and login information in an organized table format.</p>
+          <ul>
+            <li>Single-click to copy, double-click to edit</li>
+            <li>Filter to search through credentials</li>
+            <li>Enter to save, Shift+Enter for newlines in cells</li>
+          </ul>
+        </div>
+        <div class="help-subsection">
+          <h4>Just Text</h4>
+          <p>Simple plain text editor for notes, lists, or any unformatted content.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Image</h4>
+          <p>Store and view images securely in your vault (coming soon).</p>
+        </div>
+      </section>
+
+      <section class="help-section">
+        <h4>💡 Best Practices</h4>
+        <ul>
+          <li><strong>Strong Passwords:</strong> Use 16+ characters with mixed types. Aim for gold (4 bars) on the strength indicator!</li>
+          <li><strong>Multiple Backups:</strong> Keep copies in different secure locations (USB, cloud, external drive)</li>
+          <li><strong>Multiple Vaults:</strong> Create separate vault files for different purposes (work, personal, etc.)</li>
+          <li><strong>Regular Saves:</strong> Click save after making changes - there's no auto-save</li>
+          <li><strong>Test Decryption:</strong> After encrypting for the first time, immediately decrypt to verify your password works</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h4>❓ Common Questions</h4>
+        <div class="help-subsection">
+          <h4>Where is my data stored?</h4>
+          <p>Only in the HTML file you save. There are no servers, no cloud, no databases. You have complete control.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Can I use this offline?</h4>
+          <p>Yes! HTMLVault works completely offline. No internet connection required.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Is this really secure?</h4>
+          <p>Yes! Uses AES-256-GCM encryption - the same standard as governments and militaries. With a strong password, it would take billions of years to crack.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Can I have multiple vaults?</h4>
+          <p>Absolutely! Save different vault files for different purposes. Each can have its own password.</p>
+        </div>
+      </section>
+
+      <section class="help-section help-footer">
+        <p>📚 For complete documentation, visit the <a href="https://github.com/ZenDanity/HTMLVault" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>
+      </section>
+
+      </div>
+
+      <!-- User Guide Tab -->
+      <div id="userguideTab" class="help-tab-content">
+
+      <section class="help-section" style="text-align: center; margin-bottom: 20px;">
+        <a href="https://www.buymeacoffee.com/zendanity" target="_blank" rel="noopener noreferrer">
+          <img replace src="img/buymeacoffee.png" alt="Buy me a coffee" class="buymeacoffee-logo">
+        </a>
+      </section>
+
+      <section class="help-section">
+        <h3>📖 Full User Guide (Step-by-Step for Beginners)</h3>
+        <p class="help-intro-text">This guide explains everything in simple terms, perfect if you're new to encryption or not very tech-savvy.</p>
+        
+        <h4>What is This and How Does It Work?</h4>
+        <p>Think of HTMLVault like a magic safety box for your secrets on your computer:</p>
+        <ol>
+          <li><strong>You put things inside the blue box:</strong> You can write notes, save passwords, or add pictures in the blue area that says "Encrypted Area"</li>
+          <li><strong>You lock it with a secret word (password):</strong> When you type a password and click the lock icon, your information gets scrambled into a secret code that nobody can read</li>
+          <li><strong>You save it to your computer:</strong> The scrambled (encrypted) version gets saved as a file on your computer, just like saving a document</li>
+          <li><strong>You can open it again later:</strong> When you open the file and type your password, it unscrambles everything so you can see it again</li>
+          <li><strong>Nobody else can see it:</strong> Without your password, the file just looks like random gibberish - even the world's most powerful computers couldn't figure it out!</li>
+        </ol>
+        <p><strong>Important to understand:</strong> Your password is like the only key to your safety box. If you lose the key (forget the password), there is absolutely NO way to get your stuff back. So make sure you remember it or write it down somewhere safe!</p>
+
+        <h4>Decide on a Content Template</h4>
+        <p>Before you start, you need to choose what type of information you want to store. Here are your options:</p>
+        <ul>
+          <li><strong>Credentials:</strong> Choose this if you want to save login information (like passwords for websites, email accounts, etc.). It gives you a nice table where you can organize everything neatly.</li>
+          <li><strong>Just Text:</strong> Choose this if you just want to write notes, lists, ideas, or any text. It's like a simple notepad.</li>
+          <li><strong>Images:</strong> Choose this if you want to save pictures (this feature is coming soon!).</li>
+        </ul>
+        <p><strong>Don't worry!</strong> You can always change your mind later and create a new vault file with a different template. You can even have multiple vault files - one for passwords, one for notes, etc.</p>
+
+        <h4>How to Use HTMLVault (Complete Step-by-Step)</h4>
+        
+        <p><strong>STEP 1: Choose Your Content Type</strong></p>
+        <ol>
+          <li>Look at the top-right corner of the screen</li>
+          <li>Click the button with a plus sign (+)</li>
+          <li>A menu will appear - click on "Credentials" if you want to save passwords, or "Just Text" if you want to save notes</li>
+          <li>The blue area will now show either a table (for Credentials) or a text box (for Just Text)</li>
+        </ol>
+
+        <p><strong>STEP 2: Add Your Information</strong></p>
+        <ul>
+          <li><strong>If you chose Credentials:</strong>
+            <ul>
+              <li>You'll see a table with columns for "Website", "Username", and "Password"</li>
+              <li>Click in any cell and type your information (like "facebook.com" under Website)</li>
+              <li>Click "Add Row" at the bottom if you need more rows for more passwords</li>
+            </ul>
+          </li>
+          <li><strong>If you chose Just Text:</strong>
+            <ul>
+              <li>You'll see a big text box</li>
+              <li>Just click inside and start typing your notes, lists, or whatever you want to save</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p><strong>STEP 3: Create a Password</strong></p>
+        <ol>
+          <li>Look at the center of the top bar - you'll see a box that says "master password"</li>
+          <li>Click in that box and type a password that you'll remember</li>
+          <li>Make it strong! Use a mix of letters, numbers, and symbols. Watch the colored bars below - try to get them to turn gold!</li>
+          <li><strong>WRITE DOWN YOUR PASSWORD!</strong> Keep it somewhere safe like a notebook (not on your computer)</li>
+        </ol>
+
+        <p><strong>STEP 4: Lock (Encrypt) Your Information</strong></p>
+        <ol>
+          <li>After typing your password, you can either:
+            <ul>
+              <li>Press the "Enter" key on your keyboard, OR</li>
+              <li>Click the closed lock icon (🔒) next to the password box</li>
+            </ul>
+          </li>
+          <li>The blue box will turn into scrambled gibberish - this is GOOD! It means your information is now encrypted and safe</li>
+        </ol>
+
+        <p><strong>STEP 5: Save the File to Your Computer</strong></p>
+        <ol>
+          <li>Look at the top-left corner and click the save icon (💾) OR press Ctrl+S on your keyboard</li>
+          <li>Your computer will ask where to save the file - choose a location you'll remember (like "Documents" or "Desktop")</li>
+          <li>The file will be named something like "HTMLVault.html" - you can rename it to anything you want (like "My Passwords.html")</li>
+          <li>Click "Save"</li>
+        </ol>
+
+        <p><strong>STEP 6: Opening Your Vault Later</strong></p>
+        <ol>
+          <li>Find the saved HTML file on your computer (wherever you saved it)</li>
+          <li>Double-click the file - it will open in your web browser (Chrome, Firefox, Edge, etc.)</li>
+          <li>You'll see the scrambled gibberish in the blue box</li>
+          <li>Type your password in the password box</li>
+          <li>Press "Enter" or click the open lock icon (🔓)</li>
+          <li>Like magic, your information will appear again!</li>
+        </ol>
+
+        <p><strong>STEP 7: Making Changes and Updating the File</strong></p>
+        <ol>
+          <li>After opening your vault (decrypting it), you can make changes to your information</li>
+          <li>Add new passwords, edit text, whatever you need</li>
+          <li>When done, type your password again and click the closed lock (🔒) to encrypt it</li>
+          <li>Click the save icon (💾) to save</li>
+          <li><strong>IMPORTANT:</strong> When saving, your computer will ask if you want to replace the old file - click "Yes" or "Replace". This updates your vault file with the new information. If you don't replace it, you'll have two files and might get confused about which one is the latest!</li>
+        </ol>
+
+        <p><strong>Renaming Your Vault File</strong></p>
+        <p>You can change the name of your vault file anytime:</p>
+        <ul>
+          <li><strong>Before saving:</strong> When you click save, just type a new name in the file name box (like "Work Passwords.html" or "Secret Notes.html")</li>
+          <li><strong>After saving:</strong> Find the file on your computer, right-click it, choose "Rename", and type a new name. Just make sure it still ends with ".html"!</li>
+          <li><strong>Inside the vault:</strong> You can also double-click the title at the top (where it says "HTMLVault") to change what appears at the top of the page</li>
+        </ul>
+
+        <p><strong>Creating Multiple Vaults</strong></p>
+        <p>You can have as many vault files as you want! For example:</p>
+        <ul>
+          <li>One vault for work passwords (saved as "Work Passwords.html")</li>
+          <li>One vault for personal notes (saved as "Personal Notes.html")</li>
+          <li>One vault for important documents (saved as "Important Docs.html")</li>
+        </ul>
+        <p>Each vault can have its own password and contain different information. Just save them with different names!</p>
+      </section>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// Help Tab Switching
+document.addEventListener('DOMContentLoaded', function() {
+  const helpTabs = document.querySelectorAll('.help-tab');
+  const tabContents = document.querySelectorAll('.help-tab-content');
+  
+  helpTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      const targetTab = this.getAttribute('data-tab');
+      
+      // Remove active class from all tabs and contents
+      helpTabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      this.classList.add('active');
+      
+      // Show corresponding content
+      const targetContent = document.getElementById(targetTab + 'Tab');
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+        <ol>
+          <li><strong>Choose Content Type:</strong> Click the <strong>+</strong> button in the top-right to select what you want to store (Credentials, Just Text, or Image)</li>
+          <li><strong>Add Your Data:</strong> Fill in your sensitive information</li>
+          <li><strong>Enter Password:</strong> Type a strong master password in the center field (watch the strength bars!)</li>
+          <li><strong>Encrypt:</strong> Click the <strong>closed lock 🔒</strong> icon</li>
+          <li><strong>Save File:</strong> Click the <strong>save icon 💾</strong> in the top-left to download your encrypted vault</li>
+          <li><strong>Store Safely:</strong> Save the file to a secure location (USB drive, cloud backup, etc.)</li>
+        </ol>
+      </section>
+
+      <section class="help-section">
+        <h3>🔓 Opening Your Vault Later</h3>
+        <ol>
+          <li><strong>Open the saved HTML file</strong> in your browser</li>
+          <li><strong>Enter your password</strong> in the center field</li>
+          <li><strong>Click the open lock 🔓</strong> or press <strong>Enter</strong> to decrypt</li>
+          <li><strong>Make your changes</strong></li>
+          <li><strong>Encrypt again</strong> with the closed lock 🔒</li>
+          <li><strong>Save</strong> to update the file (use Ctrl+S or click save icon)</li>
+        </ol>
+      </section>
+
+      <section class="help-section">
+        <h3>✏️ Quick Tips</h3>
+        <ul>
+          <li><strong>Edit Vault Name:</strong> Double-click the underlined title next to the save button, or click the pencil ✎ icon</li>
+          <li><strong>Copy Credentials:</strong> Single-click any cell in the credentials table to copy it instantly</li>
+          <li><strong>Edit Credentials:</strong> Double-click any cell to edit it directly</li>
+          <li><strong>Show Password:</strong> Click and hold the 👁️ eye icon to reveal your password while typing</li>
+          <li><strong>Keyboard Shortcut:</strong> Press <strong>Ctrl+S</strong> to save quickly</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <p class="help-note">⚠️ <strong>CRITICAL WARNING:</strong> If you forget your password, your data is permanently lost. There is NO password recovery method - this is by design for maximum security. Write down your password in a secure location!</p>
+      </section>
+
+      <hr class="help-divider">
+
+      <section class="help-section">
+        <h3>📖 More Details</h3>
+      </section>
+
+      <section class="help-section">
+        <h4>🔐 Security Information</h4>
+        <ul>
+          <li><strong>Encryption:</strong> AES-256-GCM (military-grade encryption)</li>
+          <li><strong>Key Derivation:</strong> PBKDF2 with 100,000 iterations</li>
+          <li><strong>Password:</strong> Never stored anywhere - only you know it</li>
+          <li><strong>Offline:</strong> Works completely offline, no internet required</li>
+          <li><strong>No Tracking:</strong> Zero data collection, no servers, no cloud</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h4>📝 Content Types Explained</h4>
+        <div class="help-subsection">
+          <h4>Credentials</h4>
+          <p>Store usernames, passwords, and login information in an organized table format.</p>
+          <ul>
+            <li>Single-click to copy, double-click to edit</li>
+            <li>Filter to search through credentials</li>
+            <li>Enter to save, Shift+Enter for newlines in cells</li>
+          </ul>
+        </div>
+        <div class="help-subsection">
+          <h4>Just Text</h4>
+          <p>Simple plain text editor for notes, lists, or any unformatted content.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Image</h4>
+          <p>Store and view images securely in your vault (coming soon).</p>
+        </div>
+      </section>
+
+      <section class="help-section">
+        <h4>💡 Best Practices</h4>
+        <ul>
+          <li><strong>Strong Passwords:</strong> Use 16+ characters with mixed types. Aim for gold (4 bars) on the strength indicator!</li>
+          <li><strong>Multiple Backups:</strong> Keep copies in different secure locations (USB, cloud, external drive)</li>
+          <li><strong>Multiple Vaults:</strong> Create separate vault files for different purposes (work, personal, etc.)</li>
+          <li><strong>Regular Saves:</strong> Click save after making changes - there's no auto-save</li>
+          <li><strong>Test Decryption:</strong> After encrypting for the first time, immediately decrypt to verify your password works</li>
+        </ul>
+      </section>
+
+      <section class="help-section">
+        <h4>❓ Common Questions</h4>
+        <div class="help-subsection">
+          <h4>Where is my data stored?</h4>
+          <p>Only in the HTML file you save. There are no servers, no cloud, no databases. You have complete control.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Can I use this offline?</h4>
+          <p>Yes! HTMLVault works completely offline. No internet connection required.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Is this really secure?</h4>
+          <p>Yes! Uses AES-256-GCM encryption - the same standard as governments and militaries. With a strong password, it would take billions of years to crack.</p>
+        </div>
+        <div class="help-subsection">
+          <h4>Can I have multiple vaults?</h4>
+          <p>Absolutely! Save different vault files for different purposes. Each can have its own password.</p>
+        </div>
+      </section>
+
+      <section class="help-section help-footer">
+        <p>📚 For complete documentation, visit the <a href="https://github.com/ZenDanity/HTMLVault" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+/* ============================================
+   THEME STYLES - Color schemes
+   ============================================ */
+
+/* Light Theme */
+.theme-light {
+  /* Background colors */
+  --color-bg: #ffffff;
+  --color-navbar-bg: #f8f9fa;
+  --color-vault-bg: #ffffff;
+  
+  /* Text colors */
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  
+  /* Border colors */
+  --color-border: #dddddd;
+  --color-vault-border: #0066cc;
+  --color-vault-border-red: #ff4a4a;
+  
+  /* Button colors */
+  --color-primary: #0066cc;
+  --color-primary-hover: #0052a3;
+  --color-secondary: #f0f0f0;
+  --color-secondary-hover: #e0e0e0;
+  
+  /* Input colors */
+  --color-input-bg: #ffffff;
+  
+  /* Scrollbar colors */
+  --color-scrollbar-track: #f0f0f0;
+  --color-scrollbar-thumb: #c0c0c0;
+  --color-scrollbar-thumb-hover: #a0a0a0;
+}
+
+.theme-light {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Dark Theme */
+.theme-dark {
+  /* Background colors */
+  --color-bg: #1a1a1a;
+  --color-navbar-bg: #222222;
+  --color-vault-bg: #1a1a1a;
+  
+  /* Text colors */
+  --color-text: #e0e0e0;
+  --color-text-muted: #999999;
+  
+  /* Border colors */
+  --color-border: #404040;
+  --color-vault-border: #4a9eff;
+  --color-vault-border-red: #ff4a4a;
+  
+  /* Button colors */
+  --color-primary: #4a9eff;
+  --color-primary-hover: #357abd;
+  --color-secondary: #333333;
+  --color-secondary-hover: #404040;
+  
+  /* Input colors */
+  --color-input-bg: #2a2a2a;
+  
+  /* Scrollbar colors */
+  --color-scrollbar-track: #2a2a2a;
+  --color-scrollbar-thumb: #555555;
+  --color-scrollbar-thumb-hover: #666666;
+}
+
+.theme-dark {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Respect user's system preference */
+@media (prefers-color-scheme: dark) {
+  body:not(.theme-light):not(.theme-dark) {
+    /* Apply dark theme variables if no theme class is set */
+    --color-bg: #1a1a1a;
+    --color-navbar-bg: #222222;
+    --color-vault-bg: #1a1a1a;
+    --color-text: #e0e0e0;
+    --color-text-muted: #999999;
+    --color-border: #404040;
+    --color-vault-border: #4a9eff;
+    --color-vault-border-red: #ff4a4a;
+    --color-primary: #4a9eff;
+    --color-primary-hover: #357abd;
+    --color-secondary: #333333;
+    --color-secondary-hover: #404040;
+    --color-input-bg: #2a2a2a;
+    --color-scrollbar-track: #2a2a2a;
+    --color-scrollbar-thumb: #555555;
+    --color-scrollbar-thumb-hover: #666666;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+}
