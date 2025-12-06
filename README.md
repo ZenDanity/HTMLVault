@@ -1,4 +1,4 @@
-# 🔒 Store Encrypted Information in a Self-Contained HTML File
+# 🔒 Store Encrypted Credentials, Images and Text in a Self-Contained HTML File
 
 HTMLVault is a single-file, zero-dependency password vault that encrypts your sensitive data using military-grade AES-256-GCM encryption - all running locally in your browser.
 
