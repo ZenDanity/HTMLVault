@@ -79,6 +79,7 @@
   #encryptedContent {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    overflow-x:hidden;
   }
   
   #vault-content {

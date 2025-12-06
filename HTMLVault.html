@@ -285,13 +285,16 @@ input[type="password"] {
   background-color: var(--color-input-bg);
   color: var(--color-text);
   transition: border-color var(--transition-speed);
-  min-width: 350px;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
   outline: none;
   border-color: var(--color-primary);
+}
+
+#password {
+    min-width:350px;
 }
 
 input[type="password"]::placeholder {
@@ -1016,6 +1019,7 @@ button:active {
   #encryptedContent {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    overflow-x:hidden;
   }
   
   #vault-content {
@@ -1082,8 +1086,13 @@ button:active {
 .credentials-toolbar {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   margin-bottom: 8px;
+  width:100%;
+}
+
+.credentials-add-container {
+    height: 32px;
 }
 
 .btn-add {
@@ -1093,12 +1102,20 @@ button:active {
   border: none;
   cursor: pointer;
   font-size: 0.9rem;
-  height: 32px;
   white-space: nowrap;
 }
 
 .btn-add:hover {
   background-color: var(--color-primary-hover);
+}
+
+
+.credentials-filter-container {
+    width: 100%;
+}
+
+#credentialFilter {
+    width:100%;
 }
 
 .filter-input {
@@ -1185,6 +1202,85 @@ button:active {
 
 .btn-action:hover {
   opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE STYLES - Mobile and tablet
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+  :root {
+    
+  }
+  
+  /* Hide table header */
+  .credentials-table thead {
+    display: none;
+  }
+  
+  /* Make table elements block-level for card layout */
+  .credentials-table,
+  .credentials-table tbody,
+  .credentials-table tr,
+  .credentials-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  /* Style each row as a card */
+  .credentials-table tr {
+    margin-bottom: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 6px;
+    background-color: var(--color-vault-bg);
+  }
+  
+  /* Remove default borders from cells */
+  .credentials-table td {
+    border: none;
+    padding: 4px 0;
+    text-align: left;
+  }
+  
+  /* Actions cell at the top of each card */
+  .actions-cell {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 4px;
+    padding: 0 0 4px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  /* Add labels before each data cell */
+  .credentials-table td:nth-of-type(2)::before {
+    content: "Service: ";
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  
+  .credentials-table td:nth-of-type(3)::before {
+    content: "Username: ";
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  
+  .credentials-table td:nth-of-type(4)::before {
+    content: "Password: ";
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  
+  .credentials-table td:nth-of-type(5)::before {
+    content: "Notes: ";
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  
+  /* Don't add label to actions cell */
+  .actions-cell::before {
+    content: none;
+  }
 }
 
   </style>
@@ -2858,8 +2954,12 @@ function saveTitle() {
 const modules = {
   credentials: `<div class="template-credentials">
   <div class="credentials-toolbar">
-    <button onclick="addCredentialRow()" class="btn-add">+ Add Row</button>
-    <input type="text" id="credentialFilter" class="filter-input" placeholder="filter" oninput="filterCredentials()">
+    <div class="credentials-add-container">
+        <button onclick="addCredentialRow()" class="btn-add">+ Add Row</button>
+    </div>
+    <div class="credentials-filter-container">
+        <input type="text" id="credentialFilter" class="filter-input" placeholder="filter" oninput="filterCredentials()">
+    </div>
   </div>
   
   <table class="credentials-table">
