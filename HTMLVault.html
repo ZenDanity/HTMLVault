@@ -947,26 +947,75 @@ button:active {
     --spacing-lg: 16px;
   }
   
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  body {
+    overflow-y: visible;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #app {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    overflow-y:visible;
+  }
+  
   #topnav {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: var(--spacing-md);
     height: auto;
     gap: var(--spacing-sm);
+    position:relative;
+  }
+
+  #main {
+    position:relative;
   }
   
   .nav-left,
   .nav-center,
   .nav-right {
-    width: 100%;
     justify-content: center;
   }
   
+  .nav-left {
+    order: 1;
+    justify-content: flex-start;
+    align-self:start;
+  }
+  
+  .nav-right {
+    order: 2;
+    justify-content: flex-end;
+    align-self:end;
+  }
+  
   .nav-center {
-    flex-wrap: wrap;
+    order: 3;
+    width: 100%;
+    flex-wrap: no-wrap;
   }
   
   #vault {
     padding: var(--spacing-md);
+    position:relative;
+    bottom:0;
+  }
+  
+  #encryptedContent {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   #vault-content {
@@ -976,49 +1025,24 @@ button:active {
   input[type="password"] {
     min-width: 200px;
   }
+  
+  #footer {
+    position: static;
+  }
+
+    #github-container {
+        position: absolute;
+        width: 0px;
+        margin:0;
+        padding:0;
+        visibility:hidden;
+    }
+
+    #help-container {
+        margin-left:0;
+    }
 }
 
-/* Mobile portrait (< 480px) */
-@media screen and (max-width: 480px) {
-  :root {
-    --font-size-base: 0.875rem;
-    --font-size-sm: 0.75rem;
-    --spacing-sm: 6px;
-    --spacing-md: 10px;
-    --spacing-lg: 14px;
-  }
-  
-  .nav-left h1 {
-    font-size: 1.125rem;
-  }
-  
-  .nav-left .logo {
-    height: 24px;
-  }
-  
-  .nav-right .github-logo {
-    height: 24px;
-  }
-  
-  button {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-  }
-  
-  input[type="password"] {
-    min-width: 150px;
-    font-size: var(--font-size-sm);
-  }
-  
-  #vault {
-    padding: var(--spacing-sm);
-  }
-  
-  #vault-content {
-    padding: var(--spacing-sm);
-    min-height: 300px;
-  }
-}
 
 /* Accessibility: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
@@ -1043,6 +1067,124 @@ button:active {
   #vault-content {
     border-width: 4px;
   }
+}
+
+  </style>
+  <style type="text/css">
+/* ============================================
+   CREDENTIALS STYLES - Table layout and interactions
+   ============================================ */
+
+.template-credentials {
+  padding: 8px;
+}
+
+.credentials-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.btn-add {
+  padding: 6px 12px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.filter-input {
+  flex: 1;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-family: var(--font-family);
+  outline: none;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.filter-input:focus {
+  border-color: var(--color-primary);
+}
+
+.credentials-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.credentials-table th,
+.credentials-table td {
+  border: 1px solid var(--color-border);
+  padding: 4px 6px;
+  text-align: left;
+}
+
+.credentials-table th {
+  background-color: var(--color-navbar-bg);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.credentials-table td {
+  font-size: 0.9rem;
+}
+
+.credentials-table td.editing {
+  background-color: var(--color-input-bg);
+  border: 2px solid var(--color-primary);
+  padding: 3px 5px;
+}
+
+.credentials-table td[contenteditable="true"] {
+  cursor: text;
+}
+
+.credentials-table td[contenteditable="true"]:focus {
+  outline: none;
+}
+
+.credentials-table td:not(.actions-cell) {
+  transition: background-color 0.5s ease-out;
+}
+
+.credentials-table td.copied {
+  background-color: #28a745 !important;
+  transition: none;
+}
+
+.actions-cell {
+  width: 70px;
+  text-align: center;
+  cursor: default;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+.btn-action {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.btn-action:hover {
+  opacity: 1;
 }
 
   </style>
@@ -1532,13 +1674,6 @@ border-radius: 4px 4px 8px 8px;
             <div class="dropdown-item" data-module="image">Image</div>
           </div>
         </div>
-        <!--
-        <div id="buymeacoffee-container">
-            <a href="https://www.buymeacoffee.com/zendanity" target="_blank" rel="noopener noreferrer">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiEAAACZCAMAAADOzxqEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIRQTFRFw6kJSkAahnUS8NACHBkhpI8N4cME/+ZAhnUROjMcKyYfaFoW0rYHlYIPs5wLWU0Yd2cUHBkg//e/aFoVd2cTKyYe0rYG/98Q/+6AWU0X//vf//3v/+Eg//CP/+Mw//Sv/+pg//nP/+xw//Kf/+hQ/+5///a/DQwiDQwj/////90A////A0MgiAAAACx0Uk5T/////////////////////////////////////////////////////////wDH1gmMAAARpUlEQVR42uydaWPiOAyGfcQpuUMp04N2em8z8P//3xJiJ5btHJA2pY30ZbctE4z8RJZeK4bsTLt7ePq7RZuhXV+8PG4sHgj8cfNwj56atb29dhFy94QeQrt/bSXk/Rrdg1Yy8p+TkGfMPtCUvWxsQh4xgKA19vfOJOQVnYIGCptnSAgCgtaCSEXIIzoEzcpXNw0hz5iDoDlykYYQrGLQXPauCHlHX6A57bki5A7XGDS3XVSEoNSO1mb/lYRs0A9oHUGE7B7QD2itdrcnBLf70drtZUfu0Ato7fZ3R3CRQetcZghWMmhd9khQT0XrsneCPkDrsickBK3TLpAQNCQEDQlBQ0LQfjohnJB0oZsg5A/6FwnZbv10cUuXHy1Gbxepj26eLyHpav3Rb+uV4OjqGRLCF8uPobZcISOzI+TPcD4OjKTo7XkR4h8HyN6wbJoXISsw+wFdLRYJaUzsyxkKM9g1untWhNB6+ViQjhyDJKtAvRKr33kS8kEXoo0RkiZ/ypS2emGC/p4TIQszE6W0XGmkXe1/koXwVb0krdDfcyKEB0MzVH9f91TBBv09q2qX3x5Rw1T/h/6eFSH7LGO1HBhDZNaC+vvMCNlbekX7ACnzkO0VKiIzJaS0P+liRV2glKlrWpW46eEXC3T4LAmpzdcUM0P78LGYQUK67ZCxLHH7bjaE/FksFuSYxLNahW4xV50HIWTdNAiJ/lYyn4grVfWsMReZASHCykkDSq+qzkO4d7egdgob4FLz2wk5ft/fUf6i/WJCVh8jDZORX07IWEAwiPxyQki1lStIchUcw8U+U0mqpCRAv/9qQpLDLMuu030+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" alt="Buy me a coffee" class="buymeacoffee-logo">
-            </a>
-        </div>
-        -->
         <div id="github-container">
           <a href="https://github.com/zendanity" target="_blank" rel="noopener noreferrer">
             <img src="data:image/png;base64,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" alt="GitHub" class="github-logo">
@@ -2002,115 +2137,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-        <ol>
-          <li><strong>Choose Content Type:</strong> Click the <strong>+</strong> button in the top-right to select what you want to store (Credentials, Just Text, or Image)</li>
-          <li><strong>Add Your Data:</strong> Fill in your sensitive information</li>
-          <li><strong>Enter Password:</strong> Type a strong master password in the center field (watch the strength bars!)</li>
-          <li><strong>Encrypt:</strong> Click the <strong>closed lock 🔒</strong> icon</li>
-          <li><strong>Save File:</strong> Click the <strong>save icon 💾</strong> in the top-left to download your encrypted vault</li>
-          <li><strong>Store Safely:</strong> Save the file to a secure location (USB drive, cloud backup, etc.)</li>
-        </ol>
-      </section>
-
-      <section class="help-section">
-        <h3>🔓 Opening Your Vault Later</h3>
-        <ol>
-          <li><strong>Open the saved HTML file</strong> in your browser</li>
-          <li><strong>Enter your password</strong> in the center field</li>
-          <li><strong>Click the open lock 🔓</strong> or press <strong>Enter</strong> to decrypt</li>
-          <li><strong>Make your changes</strong></li>
-          <li><strong>Encrypt again</strong> with the closed lock 🔒</li>
-          <li><strong>Save</strong> to update the file (use Ctrl+S or click save icon)</li>
-        </ol>
-      </section>
-
-      <section class="help-section">
-        <h3>✏️ Quick Tips</h3>
-        <ul>
-          <li><strong>Edit Vault Name:</strong> Double-click the underlined title next to the save button, or click the pencil ✎ icon</li>
-          <li><strong>Copy Credentials:</strong> Single-click any cell in the credentials table to copy it instantly</li>
-          <li><strong>Edit Credentials:</strong> Double-click any cell to edit it directly</li>
-          <li><strong>Show Password:</strong> Click and hold the 👁️ eye icon to reveal your password while typing</li>
-          <li><strong>Keyboard Shortcut:</strong> Press <strong>Ctrl+S</strong> to save quickly</li>
-        </ul>
-      </section>
-
-      <section class="help-section">
-        <p class="help-note">⚠️ <strong>CRITICAL WARNING:</strong> If you forget your password, your data is permanently lost. There is NO password recovery method - this is by design for maximum security. Write down your password in a secure location!</p>
-      </section>
-
-      <hr class="help-divider">
-
-      <section class="help-section">
-        <h3>📖 More Details</h3>
-      </section>
-
-      <section class="help-section">
-        <h4>🔐 Security Information</h4>
-        <ul>
-          <li><strong>Encryption:</strong> AES-256-GCM (military-grade encryption)</li>
-          <li><strong>Key Derivation:</strong> PBKDF2 with 100,000 iterations</li>
-          <li><strong>Password:</strong> Never stored anywhere - only you know it</li>
-          <li><strong>Offline:</strong> Works completely offline, no internet required</li>
-          <li><strong>No Tracking:</strong> Zero data collection, no servers, no cloud</li>
-        </ul>
-      </section>
-
-      <section class="help-section">
-        <h4>📝 Content Types Explained</h4>
-        <div class="help-subsection">
-          <h4>Credentials</h4>
-          <p>Store usernames, passwords, and login information in an organized table format.</p>
-          <ul>
-            <li>Single-click to copy, double-click to edit</li>
-            <li>Filter to search through credentials</li>
-            <li>Enter to save, Shift+Enter for newlines in cells</li>
-          </ul>
-        </div>
-        <div class="help-subsection">
-          <h4>Just Text</h4>
-          <p>Simple plain text editor for notes, lists, or any unformatted content.</p>
-        </div>
-        <div class="help-subsection">
-          <h4>Image</h4>
-          <p>Store and view images securely in your vault (coming soon).</p>
-        </div>
-      </section>
-
-      <section class="help-section">
-        <h4>💡 Best Practices</h4>
-        <ul>
-          <li><strong>Strong Passwords:</strong> Use 16+ characters with mixed types. Aim for gold (4 bars) on the strength indicator!</li>
-          <li><strong>Multiple Backups:</strong> Keep copies in different secure locations (USB, cloud, external drive)</li>
-          <li><strong>Multiple Vaults:</strong> Create separate vault files for different purposes (work, personal, etc.)</li>
-          <li><strong>Regular Saves:</strong> Click save after making changes - there's no auto-save</li>
-          <li><strong>Test Decryption:</strong> After encrypting for the first time, immediately decrypt to verify your password works</li>
-        </ul>
-      </section>
-
-      <section class="help-section">
-        <h4>❓ Common Questions</h4>
-        <div class="help-subsection">
-          <h4>Where is my data stored?</h4>
-          <p>Only in the HTML file you save. There are no servers, no cloud, no databases. You have complete control.</p>
-        </div>
-        <div class="help-subsection">
-          <h4>Can I use this offline?</h4>
-          <p>Yes! HTMLVault works completely offline. No internet connection required.</p>
-        </div>
-        <div class="help-subsection">
-          <h4>Is this really secure?</h4>
-          <p>Yes! Uses AES-256-GCM encryption - the same standard as governments and militaries. With a strong password, it would take billions of years to crack.</p>
-        </div>
-        <div class="help-subsection">
-          <h4>Can I have multiple vaults?</h4>
-          <p>Absolutely! Save different vault files for different purposes. Each can have its own password.</p>
-        </div>
-      </section>
-
-      <section class="help-section help-footer">
-        <p>📚 For complete documentation, visit the <a href="https://github.com/ZenDanity/HTMLVault" target="_blank" rel="noopener noreferrer">GitHub repository</a></p>
-      </section>
+        
     </div>
   </div>
 </div>
@@ -2280,6 +2307,208 @@ try {
   console.log(error.message); // "Decryption failed - wrong password or corrupted data"
 }
 */
+
+  </script>
+  <script type="text/javascript">
+// ============================================
+// CREDENTIALS FUNCTIONS - Table interactions
+// ============================================
+
+window.addCredentialRow = function() {
+  const table = document.querySelector('.credentials-table tbody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td class="actions-cell">
+      <button onclick="editRow(this)" class="btn-action">💾</button>
+      <button onclick="deleteRow(this)" class="btn-action">🗑️</button>
+    </td>
+    <td contenteditable="true" class="editing"></td>
+    <td contenteditable="true" class="editing"></td>
+    <td contenteditable="true" class="editing"></td>
+    <td contenteditable="true" class="editing"></td>
+  `;
+  table.appendChild(row);
+  
+  // Attach keydown handlers to all editable cells
+  const cells = row.querySelectorAll('td[contenteditable]');
+  cells.forEach(cell => {
+    cell.addEventListener('keydown', handleCellKeydown);
+  });
+  
+  // Focus first cell
+  const firstCell = row.querySelector('td[contenteditable]');
+  firstCell.focus();
+  
+  // Add blur handlers for auto-save
+  addBlurHandlers(row);
+}
+
+window.editRow = function(btn) {
+  const row = btn.closest('tr');
+  const cells = row.querySelectorAll('td:not(.actions-cell)');
+  const isEditing = cells[0].getAttribute('contenteditable') === 'true';
+  
+  if (isEditing) {
+    // Save and stop editing
+    cells.forEach(cell => {
+      cell.setAttribute('contenteditable', 'false');
+      cell.classList.remove('editing');
+      cell.removeEventListener('keydown', handleCellKeydown);
+    });
+    btn.textContent = '✏️';
+    removeBlurHandlers(row);
+  } else {
+    // Start editing
+    cells.forEach(cell => {
+      cell.setAttribute('contenteditable', 'true');
+      cell.classList.add('editing');
+      cell.addEventListener('keydown', handleCellKeydown);
+    });
+    cells[0].focus();
+    btn.textContent = '💾';
+    addBlurHandlers(row);
+  }
+}
+
+// Handle Enter key in editable cells
+function handleCellKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    // Enter without Shift: save the row
+    e.preventDefault();
+    const row = e.target.closest('tr');
+    const editBtn = row.querySelector('.btn-action');
+    window.editRow(editBtn);
+  }
+  // Shift+Enter: default behavior (new line)
+}
+
+window.filterCredentials = function() {
+  const filterValue = document.getElementById('credentialFilter').value.toLowerCase();
+  const table = document.querySelector('.credentials-table tbody');
+  const rows = table.querySelectorAll('tr');
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td:not(.actions-cell)');
+    let found = false;
+    
+    // Check if any cell contains the filter text
+    cells.forEach(cell => {
+      if (cell.textContent.toLowerCase().includes(filterValue)) {
+        found = true;
+      }
+    });
+    
+    // Show or hide the row
+    if (found || filterValue === '') {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+window.deleteRow = function(btn) {
+  const row = btn.closest('tr');
+  if (confirm('Delete this row?')) {
+    row.remove();
+  }
+}
+
+// Copy to clipboard on cell click (with delay to detect double-click)
+let clickTimer = null;
+let clickedCell = null;
+
+document.addEventListener('click', function(e) {
+  const cell = e.target.closest('td:not(.actions-cell)');
+  if (cell && cell.closest('.credentials-table')) {
+    // Only copy if not in edit mode
+    if (cell.getAttribute('contenteditable') !== 'true') {
+      // Clear existing timer if clicking same cell
+      if (clickTimer && clickedCell === cell) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        return;
+      }
+      
+      clickedCell = cell;
+      const text = cell.textContent.trim();
+      
+      if (text) {
+        // Wait 250ms to see if double-click is coming
+        clickTimer = setTimeout(() => {
+          // Single click confirmed - copy to clipboard
+          navigator.clipboard.writeText(text).then(() => {
+            // Add copied class for animation
+            cell.classList.add('copied');
+            
+            // Remove class after animation
+            setTimeout(() => {
+              cell.classList.remove('copied');
+            }, 50);
+          }).catch(err => {
+            console.error('Failed to copy:', err);
+          });
+          
+          clickTimer = null;
+          clickedCell = null;
+        }, 250);
+      }
+    }
+  }
+});
+
+// Double-click to edit cell
+document.addEventListener('dblclick', function(e) {
+  const cell = e.target.closest('td:not(.actions-cell)');
+  if (cell && cell.closest('.credentials-table')) {
+    // Only allow if not already in edit mode
+    if (cell.getAttribute('contenteditable') !== 'true') {
+      const row = cell.closest('tr');
+      const editBtn = row.querySelector('.btn-action');
+      
+      // Enter edit mode
+      window.editRow(editBtn);
+      
+      // Focus the clicked cell and move cursor to end
+      setTimeout(() => {
+        cell.focus();
+        
+        // Move cursor to end of content
+        const range = document.createRange();
+        const selection = window.getSelection();
+        range.selectNodeContents(cell);
+        range.collapse(false); // false = collapse to end
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }, 10);
+    }
+  }
+});
+
+// Auto-save when clicking outside of editable cells
+function addBlurHandlers(row) {
+  const cells = row.querySelectorAll('td[contenteditable="true"]');
+  const editBtn = row.querySelector('.btn-action');
+  
+  cells.forEach(cell => {
+    cell.addEventListener('blur', function blurHandler(e) {
+      // Check if focus moved outside the row
+      setTimeout(() => {
+        const activeElement = document.activeElement;
+        const isInRow = row.contains(activeElement);
+        
+        if (!isInRow && cell.getAttribute('contenteditable') === 'true') {
+          // Save the row
+          window.editRow(editBtn);
+        }
+      }, 100);
+    });
+  });
+}
+
+function removeBlurHandlers(row) {
+  // Blur handlers are automatically removed when contenteditable is disabled
+}
 
   </script>
   <script type="text/javascript">
@@ -2657,318 +2886,6 @@ const modules = {
     </tbody>
   </table>
 </div>
-
-<style>
-.template-credentials {
-  padding: 8px;
-}
-
-.credentials-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-
-.btn-add {
-  padding: 6px 12px;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-  height: 32px;
-  white-space: nowrap;
-}
-
-.btn-add:hover {
-  background-color: var(--color-primary-hover);
-}
-
-.filter-input {
-  flex: 1;
-  padding: 6px 12px;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-input-bg);
-  color: var(--color-text);
-  font-size: 0.9rem;
-  font-family: var(--font-family);
-  outline: none;
-  height: 32px;
-  box-sizing: border-box;
-}
-
-.filter-input:focus {
-  border-color: var(--color-primary);
-}
-
-.credentials-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-}
-
-.credentials-table th,
-.credentials-table td {
-  border: 1px solid var(--color-border);
-  padding: 4px 6px;
-  text-align: left;
-}
-
-.credentials-table th {
-  background-color: var(--color-navbar-bg);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.credentials-table td {
-  font-size: 0.9rem;
-}
-
-.credentials-table td.editing {
-  background-color: var(--color-input-bg);
-  border: 2px solid var(--color-primary);
-  padding: 3px 5px;
-}
-
-.credentials-table td[contenteditable="true"] {
-  cursor: text;
-}
-
-.credentials-table td[contenteditable="true"]:focus {
-  outline: none;
-}
-
-.credentials-table td:not(.actions-cell) {
-  transition: background-color 0.5s ease-out;
-}
-
-.credentials-table td.copied {
-  background-color: #28a745 !important;
-  transition: none;
-}
-
-.actions-cell {
-  width: 70px;
-  text-align: center;
-  cursor: default;
-  padding: 2px 4px;
-  white-space: nowrap;
-}
-
-.btn-action {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 2px 4px;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  display: inline-block;
-}
-
-.btn-action:hover {
-  opacity: 1;
-}
-<\/style>
-
-<script>
-window.addCredentialRow = function() {
-  const table = document.querySelector('.credentials-table tbody');
-  const row = document.createElement('tr');
-  row.innerHTML = \`
-    <td class="actions-cell">
-      <button onclick="editRow(this)" class="btn-action">💾</button>
-      <button onclick="deleteRow(this)" class="btn-action">🗑️</button>
-    </td>
-    <td contenteditable="true" class="editing"></td>
-    <td contenteditable="true" class="editing"></td>
-    <td contenteditable="true" class="editing"></td>
-    <td contenteditable="true" class="editing"></td>
-  \`;
-  table.appendChild(row);
-  
-  // Attach keydown handlers to all editable cells
-  const cells = row.querySelectorAll('td[contenteditable]');
-  cells.forEach(cell => {
-    cell.addEventListener('keydown', handleCellKeydown);
-  });
-  
-  // Focus first cell
-  const firstCell = row.querySelector('td[contenteditable]');
-  firstCell.focus();
-  
-  // Add blur handlers for auto-save
-  addBlurHandlers(row);
-}
-
-window.editRow = function(btn) {
-  const row = btn.closest('tr');
-  const cells = row.querySelectorAll('td:not(.actions-cell)');
-  const isEditing = cells[0].getAttribute('contenteditable') === 'true';
-  
-  if (isEditing) {
-    // Save and stop editing
-    cells.forEach(cell => {
-      cell.setAttribute('contenteditable', 'false');
-      cell.classList.remove('editing');
-      cell.removeEventListener('keydown', handleCellKeydown);
-    });
-    btn.textContent = '✏️';
-    removeBlurHandlers(row);
-  } else {
-    // Start editing
-    cells.forEach(cell => {
-      cell.setAttribute('contenteditable', 'true');
-      cell.classList.add('editing');
-      cell.addEventListener('keydown', handleCellKeydown);
-    });
-    cells[0].focus();
-    btn.textContent = '💾';
-    addBlurHandlers(row);
-  }
-}
-
-// Handle Enter key in editable cells
-function handleCellKeydown(e) {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    // Enter without Shift: save the row
-    e.preventDefault();
-    const row = e.target.closest('tr');
-    const editBtn = row.querySelector('.btn-action');
-    window.editRow(editBtn);
-  }
-  // Shift+Enter: default behavior (new line)
-}
-
-window.filterCredentials = function() {
-  const filterValue = document.getElementById('credentialFilter').value.toLowerCase();
-  const table = document.querySelector('.credentials-table tbody');
-  const rows = table.querySelectorAll('tr');
-  
-  rows.forEach(row => {
-    const cells = row.querySelectorAll('td:not(.actions-cell)');
-    let found = false;
-    
-    // Check if any cell contains the filter text
-    cells.forEach(cell => {
-      if (cell.textContent.toLowerCase().includes(filterValue)) {
-        found = true;
-      }
-    });
-    
-    // Show or hide the row
-    if (found || filterValue === '') {
-      row.style.display = '';
-    } else {
-      row.style.display = 'none';
-    }
-  });
-}
-
-window.deleteRow = function(btn) {
-  const row = btn.closest('tr');
-  if (confirm('Delete this row?')) {
-    row.remove();
-  }
-}
-
-// Copy to clipboard on cell click (with delay to detect double-click)
-let clickTimer = null;
-let clickedCell = null;
-
-document.addEventListener('click', function(e) {
-  const cell = e.target.closest('td:not(.actions-cell)');
-  if (cell && cell.closest('.credentials-table')) {
-    // Only copy if not in edit mode
-    if (cell.getAttribute('contenteditable') !== 'true') {
-      // Clear existing timer if clicking same cell
-      if (clickTimer && clickedCell === cell) {
-        clearTimeout(clickTimer);
-        clickTimer = null;
-        return;
-      }
-      
-      clickedCell = cell;
-      const text = cell.textContent.trim();
-      
-      if (text) {
-        // Wait 250ms to see if double-click is coming
-        clickTimer = setTimeout(() => {
-          // Single click confirmed - copy to clipboard
-          navigator.clipboard.writeText(text).then(() => {
-            // Add copied class for animation
-            cell.classList.add('copied');
-            
-            // Remove class after animation
-            setTimeout(() => {
-              cell.classList.remove('copied');
-            }, 50);
-          }).catch(err => {
-            console.error('Failed to copy:', err);
-          });
-          
-          clickTimer = null;
-          clickedCell = null;
-        }, 250);
-      }
-    }
-  }
-});
-
-// Double-click to edit cell
-document.addEventListener('dblclick', function(e) {
-  const cell = e.target.closest('td:not(.actions-cell)');
-  if (cell && cell.closest('.credentials-table')) {
-    // Only allow if not already in edit mode
-    if (cell.getAttribute('contenteditable') !== 'true') {
-      const row = cell.closest('tr');
-      const editBtn = row.querySelector('.btn-action');
-      
-      // Enter edit mode
-      window.editRow(editBtn);
-      
-      // Focus the clicked cell and move cursor to end
-      setTimeout(() => {
-        cell.focus();
-        
-        // Move cursor to end of content
-        const range = document.createRange();
-        const selection = window.getSelection();
-        range.selectNodeContents(cell);
-        range.collapse(false); // false = collapse to end
-        selection.removeAllRanges();
-        selection.addRange(range);
-      }, 10);
-    }
-  }
-});
-
-// Auto-save when clicking outside of editable cells
-function addBlurHandlers(row) {
-  const cells = row.querySelectorAll('td[contenteditable="true"]');
-  const editBtn = row.querySelector('.btn-action');
-  
-  cells.forEach(cell => {
-    cell.addEventListener('blur', function blurHandler(e) {
-      // Check if focus moved outside the row
-      setTimeout(() => {
-        const activeElement = document.activeElement;
-        const isInRow = row.contains(activeElement);
-        
-        if (!isInRow && cell.getAttribute('contenteditable') === 'true') {
-          // Save the row
-          window.editRow(editBtn);
-        }
-      }, 100);
-    });
-  });
-}
-
-function removeBlurHandlers(row) {
-  // Blur handlers are automatically removed when contenteditable is disabled
-}
-<\/script>
 `,
   textarea: `<textarea id="simpleTextArea" placeholder="Start typing..."></textarea>
 

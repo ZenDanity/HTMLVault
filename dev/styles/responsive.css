@@ -10,26 +10,75 @@
     --spacing-lg: 16px;
   }
   
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  body {
+    overflow-y: visible;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #app {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    overflow-y:visible;
+  }
+  
   #topnav {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: var(--spacing-md);
     height: auto;
     gap: var(--spacing-sm);
+    position:relative;
+  }
+
+  #main {
+    position:relative;
   }
   
   .nav-left,
   .nav-center,
   .nav-right {
-    width: 100%;
     justify-content: center;
   }
   
+  .nav-left {
+    order: 1;
+    justify-content: flex-start;
+    align-self:start;
+  }
+  
+  .nav-right {
+    order: 2;
+    justify-content: flex-end;
+    align-self:end;
+  }
+  
   .nav-center {
-    flex-wrap: wrap;
+    order: 3;
+    width: 100%;
+    flex-wrap: no-wrap;
   }
   
   #vault {
     padding: var(--spacing-md);
+    position:relative;
+    bottom:0;
+  }
+  
+  #encryptedContent {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   #vault-content {
@@ -39,49 +88,24 @@
   input[type="password"] {
     min-width: 200px;
   }
+  
+  #footer {
+    position: static;
+  }
+
+    #github-container {
+        position: absolute;
+        width: 0px;
+        margin:0;
+        padding:0;
+        visibility:hidden;
+    }
+
+    #help-container {
+        margin-left:0;
+    }
 }
 
-/* Mobile portrait (< 480px) */
-@media screen and (max-width: 480px) {
-  :root {
-    --font-size-base: 0.875rem;
-    --font-size-sm: 0.75rem;
-    --spacing-sm: 6px;
-    --spacing-md: 10px;
-    --spacing-lg: 14px;
-  }
-  
-  .nav-left h1 {
-    font-size: 1.125rem;
-  }
-  
-  .nav-left .logo {
-    height: 24px;
-  }
-  
-  .nav-right .github-logo {
-    height: 24px;
-  }
-  
-  button {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-  }
-  
-  input[type="password"] {
-    min-width: 150px;
-    font-size: var(--font-size-sm);
-  }
-  
-  #vault {
-    padding: var(--spacing-sm);
-  }
-  
-  #vault-content {
-    padding: var(--spacing-sm);
-    min-height: 300px;
-  }
-}
 
 /* Accessibility: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
