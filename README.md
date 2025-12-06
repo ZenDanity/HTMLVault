@@ -2,6 +2,8 @@
 
 HTMLVault is a single-file, zero-dependency password vault that encrypts your sensitive data using military-grade AES-256-GCM encryption - all running locally in your browser.
 
+![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-02.png)
+
 ## Installation
 **None!**
 
@@ -32,6 +34,29 @@ Download the HTMLVault.html file, open it in your browser, click the "+" and enc
 - 💾 **Self-contained** - Save the file anywhere, copy it, back it up
 - 🆘 **Comprehensive help system** - Built-in guide for beginners and power users
 
+### Credentials Table
+- Click any cell to copy its content
+- Double-click to edit in place
+- Filter to quickly find entries
+- Add/delete rows as needed
+- Export-friendly format
+
+![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-05.png "Integrated image gallery")
+
+### Image Gallery
+- Drag & drop images directly into the vault
+- Store images as base64 (no external files needed)
+- Click thumbnails for full-screen view
+- Download or delete images individually
+- Supports JPG, PNG, GIF, WebP, SVG
+
+![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-03.png "Integrated image gallery")
+
+### Simple Text Area
+- Just write text
+
+![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-04.png "Integrated simple text area")
+
 ## More Detailed Usage
 
 1. **Download** `HTMLVault.html` to your computer
@@ -53,28 +78,16 @@ Download the HTMLVault.html file, open it in your browser, click the "+" and enc
 - **Client-side only** - All encryption happens in your browser, nothing is sent anywhere
 - **Comprehensive CSP headers** - Protection against XSS and code injection
 
-## Advanced Features
-
-### Credentials Table
-- Click any cell to copy its content
-- Double-click to edit in place
-- Filter to quickly find entries
-- Add/delete rows as needed
-- Export-friendly format
-
-### Image Gallery
-- Drag & drop images directly into the vault
-- Store images as base64 (no external files needed)
-- Click thumbnails for full-screen view
-- Download or delete images individually
-- Supports JPG, PNG, GIF, WebP, SVG
-
-### Keyboard Shortcuts
+### Intuitiv Shortcuts and Usage
 - **Ctrl+S** - Save file
-- **Ctrl+E** - Encrypt/Decrypt
-- **Ctrl+D** - Toggle dark/light theme
-- **Enter** (in password field) - Encrypt/Decrypt
+- **ENTER** (in password field) - Encrypt/Decrypt automatically, depending on what is needed
 - **ESC** - Close modals
+- **Double Click** the Title in the top left to change it, also the filename
+- **Left Click** on a credential field to copy it
+- **Click Out** of the an image modal or edited input field to close or save it
+- And so much more intuitiv usability!
+
+![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-06.png "Help Screen")
 
 ## Development
 
