@@ -34,6 +34,10 @@ Download the HTMLVault.html file, open it in your browser, click the "+" and enc
 - 💾 **Self-contained** - Save the file anywhere, copy it, back it up
 - 🆘 **Comprehensive help system** - Built-in guide for beginners and power users
 
+## Future Plans
+- I will change the image feature to support any files
+- Some performance improvements here and there
+
 ### Credentials Table
 - Click any cell to copy its content
 - Double-click to edit in place
