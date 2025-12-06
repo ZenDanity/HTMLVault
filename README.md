@@ -3,40 +3,36 @@
 HTMLVault is a single-file, zero-dependency password vault that encrypts your sensitive data using military-grade AES-256-GCM encryption - all running locally in your browser.
 
 ## Installation
-
-<div align="center">
-  
-**Nothing!**
-
-</div>
-
-Just download `HTMLVault.html` and open it in any modern browser. That's it.
+**None!**
 
 ## Requirements
+**None!**
 
-<div align="center">
-  
-**Nothing!**
-
-</div>
-
-Works in any modern browser - Chrome, Firefox, Edge, Safari. No plugins, no server, no internet connection needed.
+## Quick Usage
+Download the HTMLVault.html file, open it in your browser, click the "+" and encrypt the file with a password
 
 ## Features
 
-- 🔐 **Military-grade AES-256-GCM encryption** - Your data is truly secure
+- 🧠 **Intuitiv Usability** - Shortcuts you know, ctrl + s, encryption with "Enter", double click to change values, and much more
+
+<br>
+
+- 📊 **Integrated Credentials Table** - Store usernames, passwords, and notes with click-to-copy
+- 🖼️ **Integrated Image Gallery** - Securely store photos and documents with drag-and-drop
+- 📝 **Integrated Simple Text Area** - For notes, thoughts, or any plain text
+
+<br>
+
 - 📦 **Everything in one HTML file** - No dependencies, no installation
 - 🖥️ **Works completely offline** - No internet required, no data leaves your device
-- 📊 **Integrated credentials table** - Store usernames, passwords, and notes with click-to-copy
-- 🖼️ **Image gallery** - Securely store photos and documents with drag-and-drop
-- 📝 **Simple text area** - For notes, thoughts, or any plain text
+- 🔐 **Military-grade AES-256-GCM encryption** - Your data is truly secure
 - 🎨 **Modern, intuitive interface** - Clean design with dark theme
 - 🔍 **Instant filtering** - Quickly find what you need
 - ⌨️ **Keyboard shortcuts** - Ctrl+S to save, Ctrl+E to encrypt, and more
 - 💾 **Self-contained** - Save the file anywhere, copy it, back it up
 - 🆘 **Comprehensive help system** - Built-in guide for beginners and power users
 
-## Usage
+## More Detailed Usage
 
 1. **Download** `HTMLVault.html` to your computer
 2. **Open** it in your browser (double-click or right-click → Open With → Browser)
@@ -146,29 +142,3 @@ MIT License - See LICENSE.md for details
 ---
 
 **⚠️ Remember:** Always keep backups of your HTMLVault file and NEVER forget your password!
-
-1. When you reopen the file, you see the encrypted content. type your password in the password field and hit enter or press decrypt, to see your list again.
-
-### Tips & Hints
-* If you messed something up, just hit **F5** to "reset" the file to the last state.
-* You can easily navigate with **TAB**
-* In the password field, **ENTER** will toggle the de-/encryption depending on the current state
-* Use 'f' to select filter, 'p' to select password field and '1' for the first input field to add a new entry (works only when you are not in an input field already)
-
-# Danger
-* You can save the file also unencrypted, but do it with care.
-* Don't visit bad websites with sensitive information in your clipboard! (copied)
-* Don't forget your master password! The file cannot be restored in any other way. (but brute-forcing of course)
-* The danger here 
-
-## ToDo, Bugs & Technical Stuff
-* Everything works so far and it's stable. I use it.
-* I did **NOT** look at the very deep cryptographic situation and considered salt, other chaining algorithms, better ways to get the right key length from the password and so on, but I will probably in the future. For now, this is just a better solution for your textfiles and messy sticky notes everywhere, with a good enough encryption for non-NSA people.
-* There are some little features that may be helpfull here and there, and maybe some cleaing of the code, but there are no special plans right now, I will work on them at some point when I am in the mood.
-* The code still contains some unnecessary code fragments I think that can be stripped
-* I stuffed this together in one day, so sorry for the bad code layout and stuff, but I just wanted it to work properly first before it looks good
-* ToDo: Adding textarea or something to easyily paste old encrypted data to new version of the file
-
-## License
-
-This Software (file) is published under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
