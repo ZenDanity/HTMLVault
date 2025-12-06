@@ -57,6 +57,8 @@ Download the HTMLVault.html file, open it in your browser, click the "+" and enc
 
 ![Screenshot](https://raw.githubusercontent.com/ZenDanity/HTMLVault/refs/heads/main/dev/screenshots/screenshot-04.png "Integrated simple text area")
 
+<a href="https://www.buymeacoffee.com/zendanity" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## More Detailed Usage
 
 1. **Download** `HTMLVault.html` to your computer
